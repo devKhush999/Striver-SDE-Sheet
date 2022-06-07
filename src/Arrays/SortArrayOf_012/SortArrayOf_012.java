@@ -27,6 +27,7 @@ public class SortArrayOf_012 {
 
     // ********************************** Approach 2 **********************************
     // Dutch National flag algorithm
+    // Intuition/Aim  here id to move 0s to index [0, low-1], 1s to [low, high] & 2s to [high+1, n-1]
 
     public void sort012_(int[] arr){
         int low = 0, mid = 0, high = arr.length - 1;

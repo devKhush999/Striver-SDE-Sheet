@@ -2,6 +2,7 @@ package Arrays.BestTimeToBuyAndSellStock;
 
 // https://takeuforward.org/data-structure/stock-buy-and-sell/
 // https://youtu.be/eMSfBgbiEjk
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 public class BestTimeToBuyAndSellStock {
 
