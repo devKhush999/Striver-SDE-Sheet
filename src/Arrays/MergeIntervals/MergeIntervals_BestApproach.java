@@ -3,12 +3,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
+// Must Watch Video (Notes not much helpful)
+// https://youtu.be/2JzRBPFYbKE
+// https://takeuforward.org/data-structure/merge-overlapping-sub-intervals/
+
 public class MergeIntervals_BestApproach {
+
+    // *********************************** Fastest Approach ***********************************
+    // T.C --> O(n * log(n)) + O(n)    Sorting + Traversal of Intervals
+    // S.C --> O(n)  in worst case  due to arranges list
 
     public int[][] merge(int[][] intervals) {
 
         // Sorting intervals according to the starting time
-        Arrays.sort(intervals, new IntervalComparator());
+        Arrays.sort(intervals, new MyIntervalComparator());
         // Another way of sorting interval according to the starting time
         // Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
 
@@ -22,6 +30,7 @@ public class MergeIntervals_BestApproach {
 
             // If the ending time of current interval is less than the starting time of next interval
             // then we don't need to change current interval, we can move to next interval
+            // as both the intervals are already non-overlapping
             if (currentInterval[1] < nextInterval[0]){
                 currentInterval = nextInterval;
                 arrangedInterval.add(currentInterval);
@@ -44,7 +53,7 @@ public class MergeIntervals_BestApproach {
 }
 
 
-class IntervalComparator implements Comparator<int[]>{
+class MyIntervalComparator implements Comparator<int[]>{
 
     @Override
     public int compare(int[] a, int[] b) {
