@@ -73,12 +73,11 @@ public class MajorityElement {
         int n = arr.length;
         HashMap<Integer, Integer> count = new HashMap<>();
 
-        for (int value : arr)
+        for (int value : arr) {
             count.put(value, count.getOrDefault(value, 0) + 1);
 
-        for (int valueKey : count.keySet()){
-            if (count.get(valueKey) > n/2)
-                return valueKey;
+            if (count.get(value) > n/2)
+                return value;
         }
         return -1;
     }

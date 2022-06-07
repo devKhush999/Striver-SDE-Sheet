@@ -1,6 +1,6 @@
 package Arrays.MajorityElement;
 
-// See this video for "INTUITION" (Must)
+// See this video for "INTUITION" (Must WATCH)
 // https://youtu.be/AoX3BPWNnoE
 // https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times/
 // https://leetcode.com/problems/majority-element/
@@ -10,7 +10,7 @@ public class MajorityElement_BetterApproach {
 
     // *********************************** Fastest Approach **********************************8**
     // Here, in this approach we actually neglect the part of array (sub-array) where 'count' of
-    // majority element becomes 0
+    // majority element becomes 0, hence that subarray doesn't have any majority element (SEE VIDEO)
     // Bayer-Moore Voting Algo   (works only when frequency of majority element is > n/2)
     // TC: O(n)
     // SC: O(1)
@@ -63,11 +63,12 @@ public class MajorityElement_BetterApproach {
             else if (num == majorElement)
                 count++;
 
-            // Diff Element --> Decrease Frequency by 1
+            // Diff. Element --> Decrease Frequency by 1
             else
                 count--;
         }
 
+        // Checking whether the majority element found is actually occurring more than n/2 times
         int majorityElementCount = 0;
 
         for (int num : arr)
