@@ -2,7 +2,6 @@ package Arrays.ReversePairs;
 
 // https://youtu.be/S6rsAlj_iB4
 // https://takeuforward.org/data-structure/count-reverse-pairs/
-// Question of Striver SDE Sheet
 
 public class ReversePairs {
 
