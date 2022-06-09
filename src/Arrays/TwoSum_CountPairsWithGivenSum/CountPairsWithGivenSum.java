@@ -10,17 +10,17 @@ public class CountPairsWithGivenSum {
     // SC -> O(n)
 
     int getPairsCount(int[] arr, int n, int sum) {
-        int count = 0;
+        int pairsCount = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
 
         for (int val : arr){
             if (map.containsKey(sum - val))
-                count += map.get(sum - val);
+                pairsCount += map.get(sum - val);
 
             map.put(val, map.getOrDefault(val, 0) + 1);
         }
 
-        return count;
+        return pairsCount;
     }
 
 
