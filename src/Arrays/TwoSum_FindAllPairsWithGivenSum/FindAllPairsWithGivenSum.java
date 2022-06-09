@@ -1,5 +1,4 @@
 package Arrays.TwoSum_FindAllPairsWithGivenSum;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -9,10 +8,35 @@ import java.util.Arrays;
 
 public class FindAllPairsWithGivenSum {
 
-    // ***************************** Efficient Solution using HashMap/HashSet *************************
 
+    // ****************************** Brute Force SSolution ****************************************
+    // Sorting the array, then try to form pairs using two for loops
+    // TC -> O(n * log(n)) + O(m * log(m)) + O(m * n)   Sorting both the array & nested loops
+    // SC -> O(m) + O(n)  for sorting (Ignoring output size array/list size)
+
+    public Pair[] allPairs_BruteForceSolution(long[] arr1, long[] arr2, long n, long m, long sum) {
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        ArrayList<Pair> list = new ArrayList<>();
+
+        for (long val1 : arr1)
+            for (long val2 : arr2)
+                if (val1 + val2 == sum)
+                    list.add(new Pair(val1, val2));
+
+        Pair[] pairs = new Pair[list.size()];
+        for (int i = 0; i < list.size(); i++)
+            pairs[i] = list.get(i);
+
+        return pairs;
+    }
+
+
+
+    // ***************************** Efficient Solution using HashMap/HashSet *************************
     // All Hashset & HashMap Operations are O(1)
-    // T.C -> O(n * log(n))    as all pairs should be returned in sorted fashion
+    // As all pairs should be returned in sorted fashion, & there are two traversal in each array
+    // T.C -> O(x * log(x)) + O(m) + O(n)       where x is average size of pairs
     // SC -> O(max(m,n))       for hashset size (ignoring Pairs array, i.e, output size)
 
     public Pair[] allPairs(long[] arr1, long[] arr2, long n, long m, long sum) {

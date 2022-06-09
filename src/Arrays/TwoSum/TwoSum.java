@@ -2,10 +2,16 @@ package Arrays.TwoSum;
 import java.util.HashMap;
 
 // https://www.geeksforgeeks.org/given-an-array-a-and-a-number-x-check-for-pair-in-a-with-sum-as-x/
+// https://youtu.be/dRUpbt8vHpo
+// https://takeuforward.org/data-structure/two-sum-check-if-a-pair-with-given-sum-exists-in-array/
+// https://leetcode.com/problems/two-sum/
 
 public class TwoSum {
 
     // **************************************** Brute Force ****************************************
+    // TC -> O(n * n)
+    // SC -> O(1)
+
     public int[] twoSum_BruteForce(int[] arr, int target) {
 
         for (int i = 0; i < arr.length; i++)
@@ -17,6 +23,7 @@ public class TwoSum {
 
         return arr;
     }
+
 
 
     // **************************** Efficient Solution using HashMap ****************************
