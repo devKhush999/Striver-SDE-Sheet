@@ -4,6 +4,7 @@ import java.util.HashMap;
 // https://takeuforward.org/data-structure/length-of-the-longest-subarray-with-zero-sum/
 // https://youtu.be/xmguZ6GbatA
 // https://www.geeksforgeeks.org/find-the-largest-subarray-with-0-sum/
+// https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
 
 public class LargestSubarrayWithZeroSum {
 
@@ -49,18 +50,21 @@ public class LargestSubarrayWithZeroSum {
 
             // we don't meed Math.max() condition here, as if the entire prefix sum becomes 0 at any index 'i'
             // then it will be of maximum length till index 'i' (think)
+            // So no need to check for next (else if) condition
             if (prefixSum == 0)
                 maxSubArrayLength = i + 1;
 
-            else{
-                if (prefixSumMap.containsKey(prefixSum)) {
+            else if (prefixSumMap.containsKey(prefixSum)) {
                     int startIndexOfSum = prefixSumMap.get(prefixSum);
                     int endingIndexOfSameSum = i;
                     maxSubArrayLength = Math.max(maxSubArrayLength, endingIndexOfSameSum - startIndexOfSum);
-                }
-                else
-                    prefixSumMap.put(prefixSum, i);
             }
+
+            // We do not update the 'prefixSum' in HashMap if 'prefixSum' exits earlier in the map
+            // because we want maximum Sub array length with sum 0 & not recent one
+            // So we added a 'else block' here
+            else
+                prefixSumMap.put(prefixSum, i);
         }
         return maxSubArrayLength;
     }
