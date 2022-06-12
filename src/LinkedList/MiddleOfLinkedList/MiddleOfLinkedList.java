@@ -8,7 +8,9 @@ public class MiddleOfLinkedList {
     // ****************************** Tortoise & Hare Approach *************************************
     // TC -> O(n)
     // SC -> O(1)
-    public ListNode middleNode_FastSlow(ListNode head) {
+
+    // This will return the first middle node of Linked-list in case of even nodes
+    public ListNode middleNode_FastSlow_SecondMiddle(ListNode head) {
         ListNode fast = head, slow = head;
 
         while (fast != null && fast.next != null){
@@ -17,6 +19,18 @@ public class MiddleOfLinkedList {
         }
         return slow;
     }
+
+    // This will return the second middle node of Linked-list in case of even nodes
+    public ListNode middleNode_FastSlow_FirstMiddle(ListNode head) {
+        ListNode fast = head, slow = head;
+
+        while (fast.next != null && fast.next.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
 
 
     // *************************** By Counting every node ***************************************
