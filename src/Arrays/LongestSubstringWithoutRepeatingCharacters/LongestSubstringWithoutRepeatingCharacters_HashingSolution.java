@@ -11,6 +11,7 @@ public class LongestSubstringWithoutRepeatingCharacters_HashingSolution {
 
     // ***************************** Efficient Hashing Solution **********************************
     // In worst case there will be two traversal of the string. For eg. consider : "abcdefghzz"
+    // one traversal by 'right' pointer and another traversal by 'left' pointer (SEE Video)
     // TC -> O(2*n) = O(n)      At most two entire traversal
     // For holding the substring characters which can consists of 128 ASCII characters (mentioned in ques)
     // SC -> O(128) = O(1)
