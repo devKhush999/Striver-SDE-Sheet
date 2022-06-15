@@ -1,5 +1,8 @@
 package LinkedList.RotateALinkedList;
 
+// https://youtu.be/9VPm6nEbVPA
+// https://takeuforward.org/data-structure/rotate-a-linked-list/
+
 public class RotateALinkedList_BruteForce {
 
     /*

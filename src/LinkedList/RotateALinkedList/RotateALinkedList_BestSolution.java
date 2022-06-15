@@ -1,5 +1,7 @@
 package LinkedList.RotateALinkedList;
 
+// https://youtu.be/9VPm6nEbVPA
+// https://takeuforward.org/data-structure/rotate-a-linked-list/
 
 public class RotateALinkedList_BestSolution {
 
@@ -60,7 +62,10 @@ public class RotateALinkedList_BestSolution {
      * Main idea is to find the length of linked-list & iterate till "length - k"
      * After this we separate two parts head & node after which rotation is to be done
      *
-     * TC -> O(2n - k) = O(n)      Two traversals (one for length & other for rotation till "n-k")
+     * O(length of the list) for calculating the length of the list.
+     * O(length of the list – (length of list%k)) for breaking link.
+     * Let, length of list = n
+     * TC -> O(n) + O(n – (k % n)) = O(n)
      * SC -> O(1)
      */
 
