@@ -40,7 +40,7 @@ public class FourSum_UniquePair_MadeEfficient {
             // loop, bcoz after that 'ith' index (i+1, i+2...) it will exceed target too (as array is sorted)
             if ((long)arr[i] + arr[i+1] + arr[i+2] + arr[i+3] > target)
                 break;
-            // If ith value of array & lst three values are lesser tha target, then skip this index & move
+            // If ith value of array & lst three values are lesser than target, then skip this index & move
             // to greater 'ith' index in search for target
             if ((long)arr[i] + arr[n-1] + arr[n-2] + arr[n-3] < target)
                 continue;

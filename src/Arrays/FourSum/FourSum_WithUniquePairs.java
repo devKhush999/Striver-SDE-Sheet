@@ -17,6 +17,8 @@ public class FourSum_WithUniquePairs {
         int n = arr.length;
 
         // Sorting is a must to ignore duplicates
+        // We need to sort array in case of unique pairs, though sorting wasn't necessary in
+        // case of duplicate pairs. But as we check for uniqueness we require array to be sorted
         Arrays.sort(arr);
 
         List<List<Integer>> allQuadruplets = new ArrayList<>();
