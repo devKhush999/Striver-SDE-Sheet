@@ -19,7 +19,7 @@ public class FlatteningOfLinkedList_Best {
             update l2= l2.next;
         4) repeat 3rd step until l2!=null
      */
-    public Node flatten_Recursive(Node head){
+    public Node flatten(Node head){
         Node l1 = head;
         Node l2 = head.next;
 
@@ -44,7 +44,7 @@ public class FlatteningOfLinkedList_Best {
      SC -> O(n)       no. of recursion calls equal to no. of nodes connected via next pointers
      */
 
-    public Node flatten(Node head){
+    public Node flatten_Recursive(Node head){
         if (head == null || head.next == null)
             return head;
 

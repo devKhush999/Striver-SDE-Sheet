@@ -21,9 +21,11 @@ public class RotateALinkedList_BruteForce {
 
         int length = 0;
         ListNode p = head;
-       while (p != null){
+        while (p != null){
             p = p.next;
+            length++;
         }
+        k = k % length;
 
         for (int i = 1; i <= k; i++){
             ListNode ptr = head;
