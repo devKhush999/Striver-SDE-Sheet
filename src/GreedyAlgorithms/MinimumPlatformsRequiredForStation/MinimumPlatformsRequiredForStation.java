@@ -77,7 +77,18 @@ train which is leaving at  500 does not even arrive at 50 and instead it came at
 is this solution working in it.. that part is really confusing. Shouldn't we use a custom class
 "train" and sort it using our own comparator according to arrival and so?
 
-* 1) You need how many trains are in at a time.
+* 1) See, You need how many trains are in at a time to determine the overlapping/coinciding train timings
+     at any time. This will only determine the minimum no. of platforms needed at any time.
+     If any train is departing before the arrival of next train, since we have sorted both arrival & departure
+     time. It may happen that departing train not be the same train which has to depart (in unsorted array),
+     it may be some other train which actually had to depart at that time (in unsorted array).
+     But this doesn't matter because even if departing train is not same, as we have sorted departure
+     timings. If any train is departing before that train we can just divert the incoming train there,
+     because I am sure that if a train is departing it must have arrived previously as
+     departure_time > arrival_time for every train.
+     So, it won't matter because it does not matter na which platform is getting vacant, but if
+     someone leaves it is for sure that the train would have arrived that is why it is leaving,
+     so one plat will go empty na! & we can divert new incoming there.
      So when they are entering that matters, because we know for sure departure will always be
      after entering.
 
