@@ -11,9 +11,13 @@ import java.util.Collections;
 public class SubsetSums {
     /*
     ***************************** Approach 1 : Pick & Not Pick Approach *********************************
-    * TC -> O(2^n)      Generating all possible subsets that are 2^n in numbers
+    * TC -> O(n * 2^n)      Generating all possible subsets sums that are 2^n in numbers
+
+    * Ignoring the output ArrayList of Subsets (that are 2^n in number) into Space complexity
     * SC -> O(n)        At most n recursive calls, as we can either pick/not-pick only n elements
-     */
+    * If we don't ignore the output ArrayList of Subsets into Space complexity, SC will be O(2^n) + O(n)
+    * Space Complexity:  O(2^n) + O(n) to store every subset sum
+    */
     public static ArrayList<Integer> subsetSum_V1(int[] arr) {
         ArrayList<Integer> subsetSum = new ArrayList<>();
         getAllSubsetSum(0, arr, subsetSum, 0);
@@ -39,8 +43,12 @@ public class SubsetSums {
 
     /*
      ***************************** Approach 2 : Construct Subset Size by Size *************************
-     * TC -> O(2^n)      Generating all possible subsets that are 2^n in numbers
-     * SC -> O(n)        At most n recursive calls, as we produce subsets size-by-size by considering all n values
+     * TC -> O(2^n)      Generating all possible subsets-sums that are 2^n in numbers
+     * Ignoring the output ArrayList of Subsets (that are 2^n in number) into Space complexity
+
+     * SC -> O(n)        At most n recursive calls, as we can either pick/not-pick only n elements
+     * If we don't ignore the output ArrayList of Subsets into Space complexity, SC will be O(2^n) + O(n)
+     * Space Complexity:  O(2^n) + O(n) to store every subset's sum
      */
     public static ArrayList<Integer> subsetSum_V2(int[] arr) {
         ArrayList<Integer> subsetSum = new ArrayList<>();
