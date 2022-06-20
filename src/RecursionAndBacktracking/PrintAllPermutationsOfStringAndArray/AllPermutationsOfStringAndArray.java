@@ -9,7 +9,7 @@ import java.util.List;
 public class AllPermutationsOfStringAndArray {
     /*
     ************************** Approach 1 : Keeping track of Visited Elements ***************************
-    * Time Complexity:  O(n!)       for generating all n! permutations
+    * Time Complexity:  O(n * n!)       for generating all n! permutations (of size 'n) & adding it to answer list
     * Space Complexity:  O(n) + O(n) + O(n!)  =  O(n!)
       Reason: One O(n) for visited boolean array, another O(n) for recursion stack space
       O(n * n!) for output permutation array that has 'n!' permutations each of length 'n'
@@ -38,6 +38,7 @@ public class AllPermutationsOfStringAndArray {
                 visited[i] = false;
             }
     }
+
 
 
     /*
