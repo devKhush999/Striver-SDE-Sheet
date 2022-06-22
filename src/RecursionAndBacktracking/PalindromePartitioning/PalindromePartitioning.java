@@ -13,7 +13,7 @@ Partitioning means we would end up generating every substring and checking for p
 
 In every recursive call, we partition the string into two substring such that; If partitioned substring
 on left side (left substring) is a palindrome, then we partition the right substring via recursive call.
-Else if left portioned substring is not palindrome, then we simply skip that partition and continue
+Else if left partitioned substring is not palindrome, then we simply skip that partition and continue
 partition at next index.
 
 When the base case (index == string.length()) has reached, this means all the left substring have been

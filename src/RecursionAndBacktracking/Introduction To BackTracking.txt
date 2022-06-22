@@ -12,3 +12,11 @@ https://www.tutorialspoint.com/introduction-to-backtracking
 - The constraints applied to find the solution is called Bounding function.
 - Backtracking follows Depth-First Search method.
 - Branch and Bound is also a Brute Force approach, which uses Breadth-First Search method.
+
+Backtracking is an algorithmic paradigm that tries different solutions until finds a solution
+that “works”.
+Problems that are typically solved using the backtracking technique have the following property in common.
+These problems can only be solved by trying every possible configuration and each configuration is
+tried only once. A Naive solution for these problems is to try all configurations and output a
+configuration that follows given problem constraints. Backtracking works incrementally and is an
+optimization over the Naive solution where all possible configurations are generated and tried.
