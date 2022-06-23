@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // MUST READ: https://www.geeksforgeeks.org/word-break-problem-using-backtracking/
+// https://youtu.be/th4OnoGasMU
 
 // Pre-requisite: Palindrome Partitioning of a string (Recursion & BackTracking Series)
 /*
@@ -48,6 +49,8 @@ public class WordBreak_II {
     /*
     * Time Complexity: O(2^n * n)  ~  O(n * 2^n)
       Reason: O(2^n) to generate every substring. Because there are 2n combinations in The Worst Case.
+      At every Index, we can either choose to partition or not, for string of length 'n', there will be
+      2^n combinations of partition & non-partition. So, TC is O(2^n)
       O(n)  to check if the substring/partition is present in the 'wordDict' dictionary or not.
 
     * Space Complexity: O(k * x) + O(n)
