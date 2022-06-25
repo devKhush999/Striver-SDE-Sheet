@@ -45,5 +45,4 @@ public class NthRootOfNumber {
             ans *= number;
         return ans;
     }
-
 }
