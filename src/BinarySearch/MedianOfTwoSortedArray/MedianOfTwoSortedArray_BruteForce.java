@@ -47,11 +47,10 @@ public class MedianOfTwoSortedArray_BruteForce {
             int valA = i < lenA ? A[i] : Integer.MAX_VALUE;
             int valB = j < lenB ? B[j] : Integer.MAX_VALUE;
 
-            arr[k++] = Math.min(valA, valB);
             if (valA <= valB)
-                i++;
+                arr[k++] = A[i++];
             else if (valB < valA)
-                j++;
+                arr[k++] = B[j++];
         }
 
         if ((lenA + lenB) % 2 == 1)
