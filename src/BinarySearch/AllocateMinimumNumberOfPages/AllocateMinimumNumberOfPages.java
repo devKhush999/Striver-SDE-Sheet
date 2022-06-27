@@ -5,6 +5,7 @@ package BinarySearch.AllocateMinimumNumberOfPages;
 // https://www.geeksforgeeks.org/allocate-minimum-number-pages/
 // https://www.codingninjas.com/codestudio/problems/ayush-gives-ninjatest_1097574?
 
+// Category of Question: "Maximum items/things should be Minimum"
 /*
 ****************************************** Intuition ******************************************
 We are required to find the minimum number of pages among all possible maximum number of pages
