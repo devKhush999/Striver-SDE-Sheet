@@ -6,7 +6,7 @@ import java.util.Arrays;
 // https://www.spoj.com/problems/AGGRCOW/
 // https://www.codingninjas.com/codestudio/problems/chess-tournament_981299?
 
-// Category of Question: "Minimum items/things should be Maximum"
+// Category of Question: "Minimum items/things should be Maximum" OR "Maximum of Minimum items/things"
 
 public class AggressiveCows {
     /*

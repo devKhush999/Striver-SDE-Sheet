@@ -5,7 +5,7 @@ package BinarySearch.AllocateMinimumNumberOfPages;
 // https://www.geeksforgeeks.org/allocate-minimum-number-pages/
 // https://www.codingninjas.com/codestudio/problems/ayush-gives-ninjatest_1097574?
 
-// Category of Question: "Maximum items/things should be Minimum"
+// Category of Question: "Maximum items/things should be Minimum" OR "Minimum of Maximum items/things"
 /*
 ****************************************** Intuition ******************************************
 We are required to find the minimum number of pages among all possible maximum number of pages
@@ -23,6 +23,45 @@ Thus, we have a search space. This search space will be sorted.
 Guess what? We reached our approach to use a binary solution.
  */
 public class AllocateMinimumNumberOfPages {
+    /*
+   ************************************ Brute Force ***************************************
+   * Time Complexity:  O(n * (SumOfArray – MaxValueInArray))
+     Reason: We are running a 'for loop' for finding the minimum no. of maximum pages allocated
+     to student in O(SumOfArray – MaxValueInArray).
+     For every iteration, we are checking if an allocation is possible or not.
+     Checking for allocation takes O(n).
+
+   * Auxiliary Space: O(1)              No extra data structure is used
+    */
+    public int allocateMinimumPages_BruteForce(int[] bookArray, int n, int students){
+        // If there are more students than the books, some students will be left out & we can't arrange
+        // books to all of them
+        if (bookArray.length < students)
+            return  -1;
+
+        int maxPageInBooksOfArray = 0;
+        int sumOfAllPagesInBookOfArray = 0;
+
+        // Find the "Maximum pages" AND "Sum of the pages of all the Books" in the Array of Books
+        for (int pages : bookArray){
+            sumOfAllPagesInBookOfArray += pages;
+            maxPageInBooksOfArray = Math.max(pages, maxPageInBooksOfArray);
+        }
+        // This stores the maximum number of pages assigned to a student which is minimum
+        int minimumPagesAllocated = -1;
+
+        // Iterating from the "sum of all Pages" to "max Page in Book of array" to find the
+        // minimum number of maximum page allocated to the student
+        for (int pages = sumOfAllPagesInBookOfArray; pages >= maxPageInBooksOfArray; pages--){
+            if (canAllocateCurrentPageAsMinimumPages(bookArray, students, pages))
+                minimumPagesAllocated = pages;
+            else break;
+        }
+        // We return the minimum pages we allocated
+        return minimumPagesAllocated;
+    }
+
+
     /*
     ************************************ BINARY SEARCH ***************************************
     * Time Complexity:  O(n * log(SumOfArray – MaxValueInArray))
@@ -118,7 +157,7 @@ public class AllocateMinimumNumberOfPages {
         // process, then the allocation is not possible
         // Case 2: If the number of students becomes less than the given students during the allocation
         // process, this means there was larger no. of pages to allocate. So, only few students took
-        // all the pages to allocate.
+        // all the pages to allocate. This doesn't matter as the page allocated was largest.
         // We return "true" in that case, bcoz it doesn't matter as 'high' will bw reduced to 'mid-1'
         // we will find one more way of allocation with smaller no. of pages
         return studentsAllocatedBooks <= students;
