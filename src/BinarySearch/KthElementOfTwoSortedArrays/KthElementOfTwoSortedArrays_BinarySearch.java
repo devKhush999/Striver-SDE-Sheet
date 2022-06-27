@@ -39,8 +39,9 @@ public class KthElementOfTwoSortedArrays_BinarySearch {
         // IMPORTANT: Recall that m <= n (Only difference)
         // Case 1: k <= m, "high = k and low = 0" bcoz we really don't need to search in index after
         // 'k' in smaller array A
-        // Case 2: k > m, "high = m and low = k-n" bcoz as k > m, we need to select at least "k-n"
+        // Case 2: n < k >= m, "high = m and low = k-n" bcoz as k > n, we need to select at least "k-n"
         // elements from smaller array A. So, 'low' becomes 'k-n'. See video for more clarification
+        // Case 3: m < k < n, "high = m and low = 0"
         int low = Math.max(0, k-n),  high = Math.min(k, m);
 
         // ************************** Same as Median of Two Sorted Arrays **************************
