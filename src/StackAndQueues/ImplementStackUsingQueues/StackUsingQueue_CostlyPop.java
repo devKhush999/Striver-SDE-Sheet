@@ -35,12 +35,12 @@ import java.util.Queue;
  */
 
 
-public class StackUsingQueue_V2 {
+public class StackUsingQueue_CostlyPop {
     private Queue<Integer> q1;
     private Queue<Integer> q2;
     private int topOfStack;
 
-    public StackUsingQueue_V2() {
+    public StackUsingQueue_CostlyPop() {
         q1 = new LinkedList<>();
         q2 = new LinkedList<>();
         topOfStack = -1;

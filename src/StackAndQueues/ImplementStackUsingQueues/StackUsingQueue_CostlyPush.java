@@ -34,11 +34,11 @@ import java.util.Queue;
  * We use two queues for this purpose.
  */
 
-public class StackUsingQueue_V1 {
+public class StackUsingQueue_CostlyPush {
     private Queue<Integer> q1;
     private Queue<Integer> q2;
 
-    public StackUsingQueue_V1() {
+    public StackUsingQueue_CostlyPush() {
         q1 = new LinkedList<>();
         q2 = new LinkedList<>();
     }
