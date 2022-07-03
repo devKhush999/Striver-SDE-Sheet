@@ -6,6 +6,7 @@ import java.util.Stack;
 // SEE SLIDES: https://leetcode.com/problems/next-greater-element-ii/solution/
 // https://www.geeksforgeeks.org/find-the-next-greater-element-in-a-circular-array/
 // https://www.geeksforgeeks.org/find-the-next-greater-element-in-a-circular-array-set-2/
+// https://medium.com/@shubhamkr/find-next-greater-element-in-an-array-d373f8c37f44
 // PRE-REQUISITE: "NEXT GREATER ELEMENT: BOTH STACK METHODS"
 
 /** ******************************** Approach *****************************************

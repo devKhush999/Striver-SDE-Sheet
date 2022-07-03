@@ -6,6 +6,7 @@ import java.util.Stack;
 // https://takeuforward.org/data-structure/next-greater-element-using-stack/
 // https://www.geeksforgeeks.org/next-greater-element/
 // https://www.geeksforgeeks.org/next-greater-element-in-same-order-as-input/
+// https://medium.com/@shubhamkr/find-next-greater-element-in-an-array-d373f8c37f44
 
 public class NextGreaterElement {
     /* ******************************** Solution 1: Brute Force ********************************
