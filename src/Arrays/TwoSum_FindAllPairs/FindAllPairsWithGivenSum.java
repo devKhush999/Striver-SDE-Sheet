@@ -1,4 +1,4 @@
-package Arrays.TwoSum_FindAllPairsWithGivenSum;
+package Arrays.TwoSum_FindAllPairs;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;

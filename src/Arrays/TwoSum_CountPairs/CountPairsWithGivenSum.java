@@ -1,4 +1,4 @@
-package Arrays.TwoSum_CountPairsWithGivenSum;
+package Arrays.TwoSum_CountPairs;
 import java.util.HashMap;
 
 // https://www.geeksforgeeks.org/count-pairs-with-given-sum/
