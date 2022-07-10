@@ -2,6 +2,7 @@ package StackAndQueues.CelebrityProblem;
 import java.util.Stack;
 
 // https://www.geeksforgeeks.org/the-celebrity-problem/
+// https://youtu.be/9u2BJfmWNEg
 
 public class CelebrityProblem_Stack {
     /* ****************************** EFFICIENT STACK SOLUTION **************************************
@@ -15,7 +16,9 @@ public class CelebrityProblem_Stack {
     * Space Complexity:    O(N)      where ‘N’ is the number of people at the party.
         * The size of the stack will be of the order of ‘N’.
      */
-    public int findCelebrity(int n) {
+    // A square NxN matrix knows[][] is used to represent people at the party such that if a "person"
+    // of "row i" and "column j"  is set to true, it means ith person knows jth person
+    public int findCelebrity(int n, boolean[][] knows) {
         // Create a stack and assume that every person is celebrity, and push every person into the Stack
         Stack<Integer> celebrities = new Stack<>();
         for (int person = 0; person < n; person++)
@@ -32,7 +35,7 @@ public class CelebrityProblem_Stack {
             // If the person ‘A’ knows the person ‘B’  i.e ‘knows(A, B)’ return true,
             // then the person ‘A’ cannot be a celebrity, as he knows someone.
             // But 'B' "can" be a celebrity. So push ‘B’ in the stack.
-            if (knows(A, B))
+            if (knows[A][B])
                 celebrities.push(B);
             // Otherwise, if the person ‘A’ doesn't know the person ‘B’ i.e, knows(A, B) return false,
             // then the person ‘A’ can be a celebrity as he doesn't someone, so push ‘A’ in the stack.
@@ -51,17 +54,11 @@ public class CelebrityProblem_Stack {
         // We check whether this "Celebrity is known to everyone or not" and check
         // whether this "Celebrity doesn't know anyone"
         for (int person = 0; person < n; person++)
-            if (celebrity != person  &&  (knows(celebrity, person)  ||  !knows(person, celebrity)))
+            if (celebrity != person  &&  (knows[celebrity][person]  ||  !knows[person][celebrity]))
                 return -1;
 
         // return the Celebrity found
         return celebrity;
-    }
-
-    // "knows(i, j)" implies whether Person 'i' knows 'j'
-    // "!knows(i, j)" implies whether Person 'i' doesn't knows 'j'
-    public boolean knows(int i, int j){
-        return true;
     }
 }
 

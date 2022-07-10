@@ -1,6 +1,7 @@
 package StackAndQueues.CelebrityProblem;
 
 // https://www.geeksforgeeks.org/the-celebrity-problem/
+// https://youtu.be/9u2BJfmWNEg
 
 public class CelebrityProblem_Brute {
     /*  **************************** BRUTE FORCE ********************************************
@@ -12,7 +13,9 @@ public class CelebrityProblem_Brute {
 
     * Space Complexity:  O(1)    No extra space is used here.
      */
-    public int findCelebrity(int n) {
+    // A square NxN matrix knows[][] is used to represent people at the party such that if a "person"
+    // of "row i" and "column j"  is set to true, it means ith person knows jth person
+    public int findCelebrity(int n, boolean[][] knows) {
 
         // Checking one by one whether the person (for each & every person) he is "Celebrity" or not
         findingCelebrity:
@@ -25,12 +28,12 @@ public class CelebrityProblem_Brute {
 
                 // If the "Celebrity" knows the current "Person", then our assumed Celebrity actually knows one
                 // Person. Hence, he is actually not a celebrity.
-                if (celebrity != person  &&  knows(celebrity, person))
+                if (celebrity != person  &&  knows[celebrity][person])
                     continue findingCelebrity;
 
                 // If the current "Person" doesn't knows the "Celebrity", then our assumed Celebrity is not by
                 // everyone. Hence, he is actually not a celebrity.
-                if (celebrity != person  &&  !knows(person, celebrity))
+                if (celebrity != person  &&  !knows[person][celebrity])
                     continue findingCelebrity;
             }
             // If no condition of Celebrity is violated, then our assumed Celebrity is indeed the Celebrity
@@ -38,11 +41,5 @@ public class CelebrityProblem_Brute {
         }
         // We were unable to find any celebrity out of 'n' people. So, no celebrity exits on party
         return -1;
-    }
-
-    // "knows(i, j)" implies whether Person 'i' knows 'j'
-    // "!knows(i, j)" implies whether Person 'i' doesn't knows 'j'
-    public boolean knows(int i, int j){
-        return true;
     }
 }

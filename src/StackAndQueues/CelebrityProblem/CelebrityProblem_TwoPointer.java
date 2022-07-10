@@ -1,5 +1,8 @@
 package StackAndQueues.CelebrityProblem;
 
+// https://www.geeksforgeeks.org/the-celebrity-problem/
+// https://youtu.be/9u2BJfmWNEg
+
 /** *****************************  Two Pointer Approach  *****************************
  * Approach: If for any pair ('i', ‘j’)  such that 'i' != ‘j’, If ‘knows(i, j)’ returns true, then it
    implies that the person having id ‘i’ cannot be a celebrity as it knows the person having id ‘j’.
