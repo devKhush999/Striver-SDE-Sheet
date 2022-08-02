@@ -12,7 +12,7 @@ public class CountDistinctSubstrings {
         * HashSet takes O(1) time (on an average, O(log(m)) in worst case) to add any substring into
           the set (where m is the size of set)
         * In the extreme worst case (when string is too long),
-            Time complexity is : O(n^2 * log(m))   (where m is the size of set)
+            * Time complexity is : O(n^2 * log(m))   (where m is the size of set)
 
      * Space Complexity : O(n ^ 3)          On an average (approximately / nearly)
         * In worst case, set contains all possible unique sub-strings (O(n * (n + 1)/2) ~ O(n^2) in numbers)
