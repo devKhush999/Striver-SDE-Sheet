@@ -1,6 +1,7 @@
 package Trie.MaximumXOROfTwoNumbersInArrays;
 
 // https://youtu.be/EIhAwfHubE8
+// https://takeuforward.org/data-structure/maximum-xor-of-two-numbers-in-an-array/
 
 public class MaximumXOROfTwoNumbersInArrays {
     /********************************* Simple Brute Force *****************************************
