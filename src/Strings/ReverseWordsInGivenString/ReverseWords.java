@@ -61,7 +61,7 @@ public class ReverseWords {
                 if (currWord.toString().equals(""))
                     continue;
                 if (answer != null)
-                    answer.insert(0, currWord + " ");
+                    answer.insert(0, currWord.toString() + " ");
                 else
                     answer = new StringBuilder(currWord.toString());
 
