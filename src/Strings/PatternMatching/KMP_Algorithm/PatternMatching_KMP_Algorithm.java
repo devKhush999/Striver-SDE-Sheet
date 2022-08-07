@@ -1,4 +1,4 @@
-package Strings.KMP_Algorithm;
+package Strings.PatternMatching.KMP_Algorithm;
 
 // MUST Watch Great Video with Deep Intuition: https://youtu.be/BXCEFAzhxGY
 // LPS Array: https://youtu.be/JoF0Z7nVSrA

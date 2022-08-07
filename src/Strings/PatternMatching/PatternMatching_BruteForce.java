@@ -1,4 +1,4 @@
-package Strings.KMP_Algorithm;
+package Strings.PatternMatching;
 
 public class PatternMatching_BruteForce {
     /******************************** Brute Force: Nested Loops ***************************************
