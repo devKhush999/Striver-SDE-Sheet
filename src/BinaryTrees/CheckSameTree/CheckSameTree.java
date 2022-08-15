@@ -50,9 +50,9 @@ class CheckSameTree {
      * Approach: Idea is to use a BFS
 
      * Time Complexity: O(n)
-     * We will traverse all the Nodes only Once
+        * We will traverse all the Nodes only Once
      * Space Complexity: O(Tree's Height)
-     * BFS Queue used
+        * BFS Queue used
      */
     public boolean checkSameTree_BFS(TreeNode rootA, TreeNode rootB) {
         // BFS Queue
