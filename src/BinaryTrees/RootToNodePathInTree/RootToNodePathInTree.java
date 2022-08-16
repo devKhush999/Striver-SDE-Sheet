@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class RootToNodePathInTree {
     /************************************ Efficient DFS Solution ****************************************
-     *
+     * Intuition: Recursion and BackTracking Approach
+
      * Time Complexity: O(n)
         * DFS Traversal takes O(n) time
      * Space Complexity: O(Tree's Height)
