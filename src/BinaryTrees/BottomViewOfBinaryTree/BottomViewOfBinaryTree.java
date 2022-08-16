@@ -1,75 +1,86 @@
-package BinaryTrees.TopViewOfBinaryTree;
+package BinaryTrees.BottomViewOfBinaryTree;
+
 import java.util.*;
 
-// PRE-REQUISITE: "VERTICAL ORDER TRAVERSAL OF BINARY TREE"
-// https://youtu.be/Et9OCDNvJ78
-// https://takeuforward.org/data-structure/top-view-of-a-binary-tree/
-// https://www.geeksforgeeks.org/print-nodes-top-view-binary-tree/
+// PRE-REQUISITE: "TOP VIEW OF BINARY TREE"
+// https://youtu.be/0FtVY6I4pB8
+// https://takeuforward.org/data-structure/bottom-view-of-a-binary-tree/
 
-public class TopViewOfBinaryTree {
+public class BottomViewOfBinaryTree {
     /********************************** Efficient TreeMap Solution **********************************
      * Intuition:
         * We group all the TreeNode in the Set of 'Verticals' like we did in problem
-            "VERTICAL ORDER TRAVERSAL OF BINARY TREE"
-        * The first Tree node in every vertical will be inside the Top view.
+            "TOP VIEW OF BINARY TREE"
+        * The Last Tree node in every vertical will be inside the Bottom view.
+        * The logic for top view and bottom view is exactly same.
+            Just use map.putIfAbsent(line,node.val) for Top view and map.put(line,node.val) for
+            Bottom view.
+        * In top view, we put the node on a Vertical (on the map) only once, because all other nodes
+            on lower level are hidden.
+        * In bottom view, we replace the previous node on same vertical, because we got another node
+            on lower node that hides the upper node.
 
      * Approach:
         * We will do the BFS Traversal, along with maintaining Vertical number of every node.
-        * We just have to check that, Is this current node the first node seen in that Vertical?
-            OR, Did we saw any TreeNode in that Vertical earlier?
-        * If the answer is Yes, then current node is part of our Top View.
-        * Else, we have seen a node in that Vertical before. So, current node is not part of our Top View.
+        * We just have to check that, Is this current node, the Last node seen in that Vertical?
+        * Whenever we encountered any TreeNode, we just mark that node as the last Node in that vertical.
+        * If, that node is actually the last node in that vertical, then it's ok.
+        * Else, if that node is not the last node in that vertical, then we will visit it later during BFS
+            So, it can be added later. See Code Description.
         * After BFS is done, we can add Tree nodes in the increasing order of Verticals.
         * A "TreeMap" cane be used easily, as the keys() in TreeMap are arranged in sorted order.
 
-     * Time Complexity: O(n * log(n))
+     * Time Complexity: O(n * log(n))       in worst case
         * We would traverse all the nodes in Tree only once
         * We are also adding nodes to TreeMap, that takes log(n) for key updation & key retrieval
         * In worst case of skewed Tree, all 'n' can be included in Binary Tree
      * Space Complexity: O(n/2) ~ O(n)
         * Due to Queue used in BFS Traversal, whose max. size can be O(n/2) in last level, in worst case.
      */
-    public static ArrayList<Integer> getTopView_TreeMap(BinaryTreeNode root) {
-        ArrayList<Integer> topView = new ArrayList<>();
+    public ArrayList<Integer> bottomView_TreeMap(BinaryTreeNode root) {
+        ArrayList<Integer> bottomView = new ArrayList<>();
         if (root == null)
-            return topView;
+            return bottomView;
 
         // We need a Map data structure to store the Vertical Lines (Vertical no.) and the
-        // first Tree node in that Vertical line. This map will store the data in the form of
+        // Last Tree node in that Vertical line. This map will store the data in the form of
         // sorted orders of keys (Vertical Lines). So, TreeMap is used
-        TreeMap<Integer, BinaryTreeNode> topViewMap = new TreeMap<>();
+        TreeMap<Integer, BinaryTreeNode> bottomViewMap = new TreeMap<>();
 
         // Queue of pair which have Tree Nodes and their respective Vertical numbers
         Queue<Node> queue = new ArrayDeque<>();
-        queue.add(new Node(root, 0));       // Add root node and its Vertical number (which is 0) to Queue
+        queue.add(new Node(root, 0));
 
         // Do a BFS
         while (!queue.isEmpty()){
             Node node = queue.remove();
 
-            // If the current Node's Vertical number doesn't contain any first node (top node) yet.
-            // Then, mark the current node as first node (top node) of that Vertical number
-            // Check if that Vertical line is present in the TreeMap or not
-            // If not present then store that Vertical line and the node->value to the map
-            if (!topViewMap.containsKey(node.vertical))
-                topViewMap.put(node.vertical, node.treeNode);
+            // If the current Node's Vertical number doesn't contain any Last node (Bottom node) yet.
+            // Then, mark the current node as Last node (Bottom Node) of that Vertical number
+            // Two cases can arise:
+            // 1) If current Vertical no. is not present in TreeMap, then store that Vertical line
+            //    and the node->value to the map, indicating it is the Bottom-most node in that vertical.
+            // 2) Else if current Vertical no. is present in TreeMap, then previous node in that vertical
+            //    is not the Bottom-most node, because we are already travelling Level wise (BFS) & we
+            //    encountered a new node in the same Vertical. So, it must be the Bottom node & not the previous one.
+            bottomViewMap.put(node.vertical, node.treeNode);
 
             // Add the Left & Right child node to Queue along with their respective Vertical number
             // For Left child, Vertical no. -> node's_vertical_number - 1
             // For Right child, Vertical no. -> node's_vertical_number + 1
             if (node.treeNode.left != null)
-                queue.add(new Node(node.treeNode.left, node.vertical - 1));
+                queue.add(new Node(node.treeNode.left, node.vertical  -1));
 
             if (node.treeNode.right != null)
                 queue.add(new Node(node.treeNode.right, node.vertical + 1));
         }
 
         // Extract all the Vertical number from the TreeMap one by one in sorted order.
-        // And add the Top node (first node) of that vertical no. to the 'TopView' List
-        for (int vertical : topViewMap.keySet())
-            topView.add(topViewMap.get(vertical).val);
+        // And add the Bottom node (last node) of that vertical no. to the 'TopView' List
+        for (int verticals : bottomViewMap.keySet())
+            bottomView.add(bottomViewMap.get(verticals).val);
 
-        return topView;
+        return bottomView;
     }
 
 
@@ -98,20 +109,20 @@ public class TopViewOfBinaryTree {
         * We are also adding nodes to HashMap, that takes O(1) for key updation & key retrieval on average
         * So, with 'n' nodes in Tree, Time Complexity is O(1)
      * Space Complexity: O(n/2) ~ O(n)
-         * Due to Queue used in BFS Traversal, whose max. size can be O(n/2) in last level, in worst case.
+        * Due to Queue used in BFS Traversal, whose max. size can be O(n/2) in last level, in worst case.
      */
-    public static ArrayList<Integer> getTopView_HashMap(BinaryTreeNode root) {
-        ArrayList<Integer> topView = new ArrayList<>();
+    public ArrayList<Integer> bottomView_HashMap(BinaryTreeNode root) {
+        ArrayList<Integer> bottomView = new ArrayList<>();
         if (root == null)
-            return topView;
-
-        // We need a Map data structure to store the Vertical Lines (Vertical no.) and the
-        // first Tree node in that Vertical line. Order of Vertical numbers doesn't matter.
-        // So, TreeMap is used
-        HashMap<Integer, BinaryTreeNode> topViewMap = new HashMap<>();
+            return bottomView;
 
         // Keep track of "Least possible Vertical number" seen.
         int leastVertical = Integer.MAX_VALUE;
+
+        // We need a Map data structure to store the Vertical Lines (Vertical no.) and the
+        // Last Tree node in that Vertical line. Order of Vertical numbers doesn't matter.
+        // So, TreeMap is used
+        HashMap<Integer, BinaryTreeNode> bottomViewMap = new HashMap<>();
 
         // Queue of pair which have Tree Nodes and their respective Vertical numbers
         Queue<Node> queue = new ArrayDeque<>();
@@ -121,12 +132,15 @@ public class TopViewOfBinaryTree {
         while (!queue.isEmpty()){
             Node node = queue.remove();
 
-            // If the current Node's Vertical number doesn't contain any first node (top node) yet.
-            // Then, mark the current node as first node (top node) of that Vertical number.
-            // Check if that Vertical line is present in the HashMap or not?
-            // If not present then store that Vertical line and the node->value to the map
-            if (!topViewMap.containsKey(node.vertical))
-                topViewMap.put(node.vertical, node.treeNode);
+            // If the current Node's Vertical number doesn't contain any Last node (Bottom node) yet.
+            // Then, mark the current node as Last node (Bottom Node) of that Vertical number
+            // Two cases can arise:
+            // 1) If current Vertical no. is not present in HashMap, then store that Vertical line and
+            //    the node->value to the map, indicating it is the Bottom-most node in that vertical
+            // 2) Else if current Vertical no. is  present in HashMap, then previous node in that vertical
+            //    is not the Bottom-most node, because we are already travelling Level wise (BFS) & we
+            //    encountered a new node in the same Vertical. So, it must be the Bottom node & not the previous one.
+            bottomViewMap.put(node.vertical, node.treeNode);
 
             // Update the least Vertical number
             leastVertical = Math.min(leastVertical, node.vertical);
@@ -135,21 +149,19 @@ public class TopViewOfBinaryTree {
             // For Left child, Vertical no. -> node's_vertical_number - 1
             // For Right child, Vertical no. -> node's_vertical_number + 1
             if (node.treeNode.left != null)
-                queue.add(new Node(node.treeNode.left, node.vertical - 1));
+                queue.add(new Node(node.treeNode.left, node.vertical  -1));
 
             if (node.treeNode.right != null)
                 queue.add(new Node(node.treeNode.right, node.vertical + 1));
         }
 
-        // Starting from the Least Vertical number, add the Top node (first node) of all
+        // Starting from the Least Vertical number, add the Bottom node (Last node) of all
         // vertical no. to the 'TopView' List
-        int vertical = leastVertical;
-        while (topViewMap.containsKey(vertical)){
-            topView.add(topViewMap.get(vertical).val);
-            vertical++;
+        while (bottomViewMap.containsKey(leastVertical)){
+            bottomView.add(bottomViewMap.get(leastVertical).val);
+            leastVertical++;
         }
-
-        return topView;
+        return bottomView;
     }
 
 
@@ -169,7 +181,6 @@ public class TopViewOfBinaryTree {
     private static class BinaryTreeNode {
         int val;
         BinaryTreeNode left, right;
-
         BinaryTreeNode(int val) {
             this.val = val;
             this.left = null;
